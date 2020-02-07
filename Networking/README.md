@@ -440,7 +440,7 @@ curl $pipne -m 5
 > -  Look a Azure `Network Watcher / Topology` to see what was created
 ---
 ## Step 3b - Azure Front Door
-Azure Front Door use used to support the creation of a scalable and secure end point for fast delivery of your global applications.
+Azure Front Door is used to support the creation of a scalable and secure end point for fast delivery of your global applications.
 This section will link both Regions created above to Front Door and show Global Load Balancing across these regions. Including failover when a Region going down.
 ref: https://azure.microsoft.com/en-us/services/frontdoor/
 This part of the Lab will be using the Azure Portal. (https://portal.azure.com)
@@ -483,13 +483,13 @@ This part of the Lab will be using the Azure Portal. (https://portal.azure.com)
     - Click `Create` to create the Azure Frond Door resource linked to the Load Balancers created previously.
 
 ### Test Azure Front Door 
-Follow the steps below to test the service. If The above setup can take a few minutes to complete. If you get `*Out services aren't available right now*` wait a few minutes for it to become available.
-- To test copy the `Frontend host` URL (e.g. https://<name>.azurefd.net)
+Follow the steps below to test the service. The above setup can take a few minutes to complete. If you get `*Out services aren't available right now*` wait a few minutes for it to become available.
+- To test, copy the `Frontend host` URL (e.g. https://<name>.azurefd.net)
 - Go to a web browser and paste it in. Before pressing enter, please change it to HTTP (e.g.  http://<name>.azurefd.net)
-- See that the web page opens. Try reloasing a few times to see it jump between the 2 regions.
+- See that the web page opens. Try reloading a few times to see it jump between the 2 regions.
 - You can also do this through curl, from your own machine or cloud shell.
 
-### Test by removing Backend pools from one of the the Load Balancers
+### Test by removing Backend pools from one of the Load Balancers
 The goal here is to show Azure Front Door routing traffic seamlessly to another Region when a Backend poll goes down.
 
 To do this you'll be removing the backend pools from one of the Load Balancers and checking that the service is still up and running.
@@ -501,7 +501,7 @@ To do this you'll be removing the backend pools from one of the Load Balancers a
 - You can also just shutdown one or a few of the VMs to simulate a failure.
 ---
 
-Thank You for going through this Lab. 
+Thank you for going through this lab. 
 
 ---
 
