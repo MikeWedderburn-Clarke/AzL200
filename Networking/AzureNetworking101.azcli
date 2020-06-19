@@ -17,7 +17,7 @@ cd networking101
 export rg="1LbAndFrontDoor"
 
 # Unique 4 characters - used to create public DNS names 
-export unique="mawc"
+export unique="mawc1"
 
 # We will create resources in 2 Azure Regions. By default WestEurope and NorthEurope but you can use others
 # Use this command to see a list of available Regions - use the 'Name' (lowercase, single word) not the 'Display Name'
@@ -232,3 +232,25 @@ for i in {1..20}; do curl $afd.azurefd.net -m 1; echo -n $'\r\f'; sleep 0.1; don
 # 3 - Try disabling one of the Backends in AFD or lower the acceptable 'latency sensitivity' to zero so it only sends traffic to the closest backend
 # 4 - Investigate Load Balancer metrics to see 'Data Path Availability' and 'Health Probe Status' to see how LB decides which backends to send traffic to. Optionally split Health Probe Status by Backend IP address
 # 5 - Add AFD metrics: Backend Health Percentage and Backend Request Latency and split by Backend 
+
+
+
+# ----------------- Scale VMSS ---------------------------------------
+
+# ---scale down---
+# loc1
+az vmss scale -g $rg -n $locs1 --new-capacity 0 --no-wait
+az vmss list-instances -g $rg -n $locs1 -o table
+
+#loc2
+az vmss scale -g $rg -n $locs2 --new-capacity 0 --no-wait
+az vmss list-instances -g $rg -n $locs2 -o table
+
+# ---scale up---
+# loc1
+az vmss scale -g $rg -n $locs1 --new-capacity 3 --no-wait
+az vmss list-instances -g $rg -n $locs1 -o table
+
+#loc2
+az vmss scale -g $rg -n $locs2 --new-capacity 3 --no-wait
+az vmss list-instances -g $rg -n $locs2 -o table
